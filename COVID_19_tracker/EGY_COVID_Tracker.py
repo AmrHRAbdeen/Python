@@ -56,6 +56,7 @@ dataFrame=  pandas.read_html(pageContent)
 #print(dataFrame[0].loc[0][0])
 for cnt in range(0,200):
     if(dataFrame[0].loc[cnt][0] == 'Egypt'):
+        globalEgyIndex = cnt
         print("Egypt index is ={}".format(cnt))
         print("Egypt No of total cases of COVID_19 is :{}".format(dataFrame[0].loc[cnt][1]))
         #3- Store our Data [Date(A) , totalCases(B)]
@@ -103,8 +104,8 @@ expectedDays=[]
 expectedCases=[]
 # Apply exp. function only if total Cases > 1000 
 # Duration 15 Days
-if dataFrame[0].loc[cnt][1] > 1000:
-    for cnt in range(0,15):
+if dataFrame[0].loc[globalEgyIndex][1] > 800:
+    for cnt in range(0,11):
         expectedDays.append(cnt)
         expectedVal = 2 ** cnt
         expectedCases.append(expectedVal)
