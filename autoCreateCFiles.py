@@ -2,7 +2,7 @@ import os, sys
 
 '''
 1- Create file
-2-Content = > constant
+2-Content+ = > constant
 #include <stdio.h>
 #include <string.h>
 #include "Std_Types.h"
@@ -26,7 +26,6 @@ myMainFile.write("#include <stdio.h> \n#include <string.h> \n#include \"Std_Type
 myMainFile.write("int main(void) \n{\n")
 ### Writing the repeated code here ###
 myMainFile.write("print(\"Hello World \";")
-
 ### Writing the End } of Main Function
 myMainFile.write("\n}\n")
 ### Writing the Credentials
