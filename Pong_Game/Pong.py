@@ -7,6 +7,9 @@
 #### import Packages ###
 import turtle as tr
 
+### Private Variables ###
+AScore=0
+BScore=0
 
 #Create Window
 wn=tr.Screen()
@@ -26,7 +29,7 @@ paddle_a.color("white")
 paddle_a.shapesize(stretch_wid=4,stretch_len=1)
 paddle_a.penup()
 # Window Center is 0,0
-paddle_a.goto(-350,0)
+paddle_a.goto(+350,0)
 # Paddle B
 paddle_b=tr.Turtle()
 #Animation Speed (0 = Max)
@@ -36,7 +39,7 @@ paddle_b.color("white")
 paddle_b.shapesize(stretch_wid=4,stretch_len=1)
 paddle_b.penup()
 # Window Center is 0,0
-paddle_b.goto(350,0)
+paddle_b.goto(-350,0)
 # Ball
 ball=tr.Turtle()
 #Animation Speed (0 = Max)
@@ -90,7 +93,14 @@ ball.dx=0.25
 # Moving in Y axis
 ball.dy=0.25
 
-
+# Adding Scoring
+score = tr.Turtle()
+score.speed(0)
+score.color("white")
+score.penup()
+score.hideturtle()
+score.goto(0,260)
+score.write("Player A: %d     Player B: %d "%(AScore,BScore),align="center",font=("Arial",15))
 #Main Game Super Loop
 while True:
     wn.update()
@@ -109,9 +119,15 @@ while True:
     if (ball.xcor() > 390):
         ball.setx(390)
         ball.dx*=-1
+        BScore+=1
+        score.clear()
+        score.write("Player A: {}     Player B: {} ".format(AScore,BScore),align="center",font=("Arial",15))
     if (ball.xcor() < -390):
         ball.setx(-390)
-        ball.dx*=-1       
+        ball.dx*=-1  
+        AScore+=1
+        score.clear()
+        score.write("Player A: %d     Player B: %d "%(AScore,BScore),align="center",font=("Arial",15))     
     # Paddle and Ball collisions
     # Cosidrations: Window [ 800 * 600 ] & (0,0) is the center
     # Ball width = 10 px , paddle = (10px * 50px)
@@ -119,5 +135,7 @@ while True:
     # Paddles @ +/- 350 px in x-axis
     if (ball.xcor() > 340 and ball.xcor() < 350) and (ball.ycor() < paddle_b.ycor() + 20 and ball.ycor() > paddle_b.ycor() -20):
         ball.dx *=-1
+
     if (ball.xcor() < -340 and ball.xcor() > -350) and (ball.ycor() < paddle_a.ycor() + 20 and ball.ycor() > paddle_a.ycor() -20):
-        ball.dx *=-1    
+        BScore+=1
+    
