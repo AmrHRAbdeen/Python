@@ -1,4 +1,10 @@
-#### Pong Game ###
+###################################################################
+# @Desc.: Pong Game
+# @Author: Amr Abdeen
+# @Env: Visual Studio Code
+###################################################################
+
+#### import Packages ###
 import turtle as tr
 
 
@@ -17,7 +23,7 @@ paddle_a=tr.Turtle()
 paddle_a.speed(0)
 paddle_a.shape("square")
 paddle_a.color("white")
-paddle_a.shapesize(stretch_wid=5,stretch_len=1)
+paddle_a.shapesize(stretch_wid=4,stretch_len=1)
 paddle_a.penup()
 # Window Center is 0,0
 paddle_a.goto(-350,0)
@@ -27,7 +33,7 @@ paddle_b=tr.Turtle()
 paddle_b.speed(0)
 paddle_b.shape("square")
 paddle_b.color("white")
-paddle_b.shapesize(stretch_wid=5,stretch_len=1)
+paddle_b.shapesize(stretch_wid=4,stretch_len=1)
 paddle_b.penup()
 # Window Center is 0,0
 paddle_b.goto(350,0)
@@ -106,5 +112,12 @@ while True:
     if (ball.xcor() < -390):
         ball.setx(-390)
         ball.dx*=-1       
-    #Paddle and Ball collisions
-        
+    # Paddle and Ball collisions
+    # Cosidrations: Window [ 800 * 600 ] & (0,0) is the center
+    # Ball width = 10 px , paddle = (10px * 50px)
+    # Object origin from its center
+    # Paddles @ +/- 350 px in x-axis
+    if (ball.xcor() > 340 and ball.xcor() < 350) and (ball.ycor() < paddle_b.ycor() + 20 and ball.ycor() > paddle_b.ycor() -20):
+        ball.dx *=-1
+    if (ball.xcor() < -340 and ball.xcor() > -350) and (ball.ycor() < paddle_a.ycor() + 20 and ball.ycor() > paddle_a.ycor() -20):
+        ball.dx *=-1    
