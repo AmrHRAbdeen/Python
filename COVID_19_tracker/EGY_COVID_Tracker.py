@@ -105,7 +105,7 @@ expectedCases=[]
 # Apply exp. function only if total Cases > 1000 
 # Duration 15 Days
 if dataFrame[0].loc[globalEgyIndex][1] > 800:
-    for cnt in range(0,11):
+    for cnt in range(0,15):
         expectedDays.append(cnt)
         expectedVal = 2 ** cnt
         expectedCases.append(expectedVal)
