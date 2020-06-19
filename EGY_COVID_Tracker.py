@@ -1,8 +1,5 @@
 #############################################################
-# Developing a script to GET my Country COVID_19 statistics
-# Packages to install:
-# openpyxl , pandas , requests , matplotlib
-# Python Version: 
+# Developing a script to GET my Country COVID_19 statistics 
 #############################################################
 import requests
 import pandas
@@ -58,7 +55,7 @@ NumofRows=len(dataFrameOfInterest.index)
 NumOfCol=len(dataFrameOfInterest.columns)
 print("Num of cols = {}".format(NumOfCol))
 for cnt in range(0,NumOfCol):
-    for inCnt in range(0,NumofRows): # 1000 *1000 => 1 Million! 1 Cycle => 10000000cycles! => Power Consumption => Consume battery=> Cost!
+    for inCnt in range(0,NumofRows):
         reeee= dataFrames[0].loc[inCnt][cnt]
         if( reeee == 'Egypt'):
             globalEgyIndex = inCnt
