@@ -2,7 +2,8 @@
 # @Desc.: Pong Game
 # @Author: Amr Abdeen
 # @Env: Visual Studio Code
-# Python Version: 
+# @Python Version: 3.8.2
+# @Packages: tkinter [sudo apt-get install python3-tk]
 ###################################################################
 
 #### import Packages ###
