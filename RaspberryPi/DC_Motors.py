@@ -2,6 +2,7 @@
 import RPi.GPIO as GPIO
 import time
 import sys
+
 # Define Motor_A Variables
 MotorA_EnablePin = 13
 MotorA_Input1 = 19
@@ -18,6 +19,7 @@ GPIO.setup( [MotorA_EnablePin,MotorA_Input1 ,MotorA_Input2, MotorB_EnablePin,Mot
 GPIO.output( MotorA_EnablePin,GPIO.HIGH)
 GPIO.output( MotorB_EnablePin,GPIO.HIGH)
 # Define Motors Functions
+
 # Move Motors Forward
 def Motors_Forward():
     GPIO.output(MotorA_Input1,GPIO.HIGH)
@@ -52,28 +54,28 @@ def Motors_Stop():
     GPIO.output(MotorB_Input3,GPIO.LOW)
     GPIO.output(MotorB_Input4,GPIO.LOW)
 
-# Print a Message to the user
-printf("Please , Enter Motor Move:  F for Forward \n B for Backward \n R for Right \n L for left \n S for Stop") 
 # Super loop
-while TRUE:
-	User_Input =input()
-    if(User_Input =='f' or User_Input == 'F'):
-        print(" Robot is moving Forward ...")
-        Motors_Forward()
-    elif(User_Input =='b' or User_Input == 'B'):
-        print(" Robot is moving Backward ...")
-        Motors_Backward()
-    elif(User_Input =='r' or User_Input == 'R'):
-        print(" Robot is moving to the Right ...")
-        Motors_Right()
-    elif(User_Input =='l' or User_Input == 'L'):
-        print(" Robot is moving to the Left ...")					
-        Motors_Left()
-    elif(User_Input =='s' or User_Input == 'S'):
-        print(" Robot Stopped...")
-        Motors_Stop()
-    elif(User_Input =='e' or User_Input == 'E'):
-        GPIO.cleanup()
-        sys.exit()
-    else:
-        printf("Please, Enter a valid Operation")
+while 1:
+	# Take user input and Print a Message to him
+	User_Input =raw_input("Please , Enter Motor Move:\n F for Forward \n B for Backward \n R for Right \n L for left \n S for Stop \n E to Exit \n")
+	if(User_Input =='f' or User_Input == 'F'):
+		print(" Robot is moving Forward ...")
+		Motors_Forward()
+	elif(User_Input =='b' or User_Input == 'B'):
+		print(" Robot is moving Backward ...")
+		Motors_Backward()
+	elif(User_Input =='r' or User_Input == 'R'):
+		print(" Robot is moving to the Right ...")
+		Motors_Right()
+	elif(User_Input =='l' or User_Input == 'L'):
+		print(" Robot is moving to the Left ...")					
+		Motors_Left()
+	elif(User_Input =='s' or User_Input == 'S'):
+		print(" Robot Stopped...")
+		Motors_Stop()
+	elif(User_Input =='e' or User_Input == 'E'):
+		GPIO.cleanup()
+		sys.exit()
+	else:
+		print("Please, Enter a valid Operation")
+
