@@ -77,5 +77,5 @@ while 1:
 		GPIO.cleanup()
 		sys.exit()
 	else:
-		print("Please, Enter a valid Operation")
+		print("Please, Enter a valid Movement")
 
