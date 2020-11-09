@@ -2,6 +2,7 @@
 import RPi.GPIO as GPIO
 import time
 import sys
+from pynput import keyboard
 
 # Define Motor_A Variables
 MotorA_EnablePin = 13
@@ -54,7 +55,8 @@ def Motors_Stop():
     GPIO.output(MotorB_Input3,GPIO.LOW)
     GPIO.output(MotorB_Input4,GPIO.LOW)
 
-# Super loop
+'''
+# Super loop Implementation
 while 1:
 	# Take user input and Print a Message to him
 	User_Input =raw_input("Please , Enter Motor Move:\n F for Forward \n B for Backward \n R for Right \n L for left \n S for Stop \n E to Exit \n")
@@ -78,4 +80,35 @@ while 1:
 		sys.exit()
 	else:
 		print("Please, Enter a valid Movement")
+'''
 
+'''
+Listener Implementation
+'''
+def on_press(User_Input):
+	if(User_Input.char =='f' or User_Input.char == 'F'):
+		print(" Robot is moving Forward ...")
+		Motors_Forward()
+	elif(User_Input.char =='b' or User_Input.char == 'B'):
+		print(" Robot is moving Backward ...")
+		Motors_Backward()
+	elif(User_Input.char =='r' or User_Input.char == 'R'):
+		print(" Robot is moving to the Right ...")
+		Motors_Right()
+	elif(User_Input.char =='l' or User_Input.char == 'L'):
+		print(" Robot is moving to the Left ...")					
+		Motors_Left()
+	elif(User_Input.char =='s' or User_Input.char == 'S'):
+		print(" Robot Stopped...")
+		Motors_Stop()
+	elif(User_Input.char =='e' or User_Input.char == 'E'):
+		GPIO.cleanup()
+		sys.exit()
+	else:
+		print("Please, Enter a valid Movement")
+
+## Print a message to the user
+print(("Please , Enter Motor Move:\n F for Forward \n B for Backward \n R for Right \n L for left \n S for Stop \n E to Exit \n")
+listener = keyboard.Listener(on_press=on_press)
+listener.start()  # start to listen on a separate thread
+listener.join()  # remove if main thread is polling self.keys
