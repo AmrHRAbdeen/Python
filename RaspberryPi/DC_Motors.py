@@ -108,7 +108,7 @@ def on_press(User_Input):
 		print("Please, Enter a valid Movement")
 
 ## Print a message to the user
-print(("Please , Enter Motor Move:\n F for Forward \n B for Backward \n R for Right \n L for left \n S for Stop \n E to Exit \n")
-listener = keyboard.Listener(on_press=on_press)
-listener.start()  # start to listen on a separate thread
-listener.join()  # remove if main thread is polling self.keys
+print("Please , Enter Motor Move:\n F for Forward \n B for Backward \n R for Right \n L for left \n S for Stop \n E to Exit \n")
+myKeyboardListener =keyboard.Listener(on_press=on_press)
+myKeyboardListener.start()  # start to listen on a separate thread
+myKeyboardListener.join()  # remove if main thread is polling self.keys
