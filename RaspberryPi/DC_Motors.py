@@ -57,7 +57,7 @@ def Motors_Stop():
     GPIO.output(MotorB_Input3,GPIO.LOW)
     GPIO.output(MotorB_Input4,GPIO.LOW)
 
-
+'''
 # Super loop Implementation
 while 1:
     # Take user input and Print a Message to him
@@ -83,11 +83,11 @@ while 1:
         print("Please, Enter a valid Movement")
 
 GPIO.cleanup()
-
+'''
 
 '''
 Listener Implementation
-
+'''
 def on_press(User_Input):
     if(User_Input.name =='f' or User_Input.name == 'F'):
         print(" Robot is moving Forward ...")
@@ -116,4 +116,3 @@ while True:
     pass	
 
 GPIO.cleanup()
-'''
