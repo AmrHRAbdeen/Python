@@ -105,7 +105,7 @@ def on_press(User_Input):
         print(" Robot Stopped...")
         Motors_Stop()
     elif(User_Input.name =='e' or User_Input.name == 'E'):
-	os._exit(0)
+        sys.exit()
     else:
         print("Please, Enter a valid Movement")
 
