@@ -2,7 +2,6 @@
 import keyboard
 import RPi.GPIO as GPIO
 import time
-import sys
 import os
 
 # Use GPIO numbers not pin numbers
@@ -58,7 +57,7 @@ def Motors_Stop():
     GPIO.output(MotorB_Input3,GPIO.LOW)
     GPIO.output(MotorB_Input4,GPIO.LOW)
 
-'''
+
 # Super loop Implementation
 while 1:
     # Take user input and Print a Message to him
@@ -79,15 +78,16 @@ while 1:
         print(" Robot Stopped...")
         Motors_Stop()
     elif(User_Input =='e' or User_Input == 'E'):
-        GPIO.cleanup()
-        sys.exit()
+        os._exit(0)
     else:
         print("Please, Enter a valid Movement")
 
-'''
+GPIO.cleanup()
+
+
 '''
 Listener Implementation
-'''
+
 def on_press(User_Input):
     if(User_Input.name =='f' or User_Input.name == 'F'):
         print(" Robot is moving Forward ...")
@@ -105,7 +105,7 @@ def on_press(User_Input):
         print(" Robot Stopped...")
         Motors_Stop()
     elif(User_Input.name =='e' or User_Input.name == 'E'):
-        sys.exit()
+        os._exit(0)
     else:
         print("Please, Enter a valid Movement")
 
@@ -116,3 +116,4 @@ while True:
     pass	
 
 GPIO.cleanup()
+'''
