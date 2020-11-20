@@ -2,7 +2,6 @@
 import keyboard
 import RPi.GPIO as GPIO
 import time
-import os
 
 # Use GPIO numbers not pin numbers
 GPIO.setmode(GPIO.BCM)
@@ -21,8 +20,8 @@ GPIO.setup( [MotorA_EnablePin,MotorA_Input1 ,MotorA_Input2, MotorB_EnablePin,Mot
 # set Motor A and B Enable to HIGH
 GPIO.output( MotorA_EnablePin,GPIO.HIGH)
 GPIO.output( MotorB_EnablePin,GPIO.HIGH)
-# Define Motors Functions
 
+# Define Motors Functions
 # Move Motors Forward
 def Motors_Forward():
     GPIO.output(MotorA_Input1,GPIO.HIGH)
@@ -36,6 +35,7 @@ def Motors_Backward():
     GPIO.output(MotorA_Input2,GPIO.HIGH)
     GPIO.output(MotorB_Input3,GPIO.LOW)
     GPIO.output(MotorB_Input4,GPIO.HIGH)
+
 # Move Motors to the Right
 def Motors_Right():
     GPIO.output(MotorA_Input1,GPIO.HIGH)
@@ -57,38 +57,7 @@ def Motors_Stop():
     GPIO.output(MotorB_Input3,GPIO.LOW)
     GPIO.output(MotorB_Input4,GPIO.LOW)
 
-'''
-# Super loop Implementation
-while 1:
-    # Take user input and Print a Message to him
-    User_Input =raw_input("Please , Enter Motor Move:\n F for Forward \n B for Backward \n R for Right \n L for left \n S for Stop \n E to Exit \n")
-    if(User_Input =='f' or User_Input == 'F'):
-        print(" Robot is moving Forward ...")
-        Motors_Forward()
-    elif(User_Input =='b' or User_Input == 'B'):
-        print(" Robot is moving Backward ...")
-        Motors_Backward()
-    elif(User_Input =='r' or User_Input == 'R'):
-        print(" Robot is moving to the Right ...")
-        Motors_Right()
-    elif(User_Input =='l' or User_Input == 'L'):
-        print(" Robot is moving to the Left ...")                   
-        Motors_Left()
-    elif(User_Input =='s' or User_Input == 'S'):
-        print(" Robot Stopped...")
-        Motors_Stop()
-    elif(User_Input =='e' or User_Input == 'E'):
-        os._exit(0)
-    else:
-        print("Please, Enter a valid Movement")
-
-GPIO.cleanup()
-'''
-
-'''
-Listener Implementation
-'''
-def on_press(User_Input):
+def KeyboardEventHandler(User_Input):
     if(User_Input.name =='f' or User_Input.name == 'F'):
         print(" Robot is moving Forward ...")
         Motors_Forward()
@@ -105,14 +74,17 @@ def on_press(User_Input):
         print(" Robot Stopped...")
         Motors_Stop()
     elif(User_Input.name =='e' or User_Input.name == 'E'):
-        os._exit(0)
+        quit()
     else:
         print("Please, Enter a valid Movement")
 
 ## Print a message to the user
 print("Please , Enter Motor Move:\n F for Forward \n B for Backward \n R for Right \n L for left \n S for Stop \n E to Exit \n")
-myKeyboardListener =keyboard.on_press(on_press)
+## Listen to the keyboard
+keyboard.on_press(KeyboardEventHandler)
+
+# Super loop to keep the script alive for listening
 while True:
-    pass	
+    pass
 
 GPIO.cleanup()
