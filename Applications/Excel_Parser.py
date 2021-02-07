@@ -38,6 +38,8 @@ def GenerationEngine():
     ### Define Generation Logic ###
     pass
 
+###################### END: Define GenerationEngine ######################
+
 
 ####################### START: Building GUI ############################
 root = Tk()
@@ -48,7 +50,6 @@ root.maxsize(1000,500)
 ####################### END: Building GUI ##############################
 
 
-###################### END: Define GenerationEngine ######################
 
 ################ START: Create Browse Button #############################
 browseButton = Button(root, text="browse", command=mFileOpen,width = 10)
