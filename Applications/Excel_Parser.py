@@ -22,13 +22,6 @@ from tkinter import Text
 fileName=""
 ################## END: Global Variables ###############################
 
-####################### START: Building GUI ############################
-root = Tk()
-root.title(" Excel Parser ")
-root.minsize(780, 245)
-root.maxsize(1000,500)
-####################### END: Building GUI ##############################
-
 ################## START: Define mFileOpen #############################
 def mFileOpen():
     global fileName
@@ -40,16 +33,37 @@ def mFileOpen():
     print(fileName)
 ###################### END: Define mFileOpen #############################
 
+###################### START: Define GenerationEngine #####################
+def GenerationEngine():
+    ### Define Generation Logic ###
+    pass
+
+
+####################### START: Building GUI ############################
+root = Tk()
+root.wm_iconbitmap(bitmap="MSexcel.ico")
+root.title(" Excel Parser ")
+root.minsize(700, 100)
+root.maxsize(1000,500)
+####################### END: Building GUI ##############################
+
+
+###################### END: Define GenerationEngine ######################
+
 ################ START: Create Browse Button #############################
-browseButton = Button(root, text="browse" , command=mFileOpen,width = 25)
-browseButton.grid(row=0,column=0,padx=0,pady=0)
+browseButton = Button(root, text="browse", command=mFileOpen,width = 10)
+browseButton.grid(row=0,column=0,padx=10,pady=5)
 ### Display File Location ###
 browseLocation=Text(root,height=1,width=50)
 browseLocation.grid(row=0,column=1,padx=10,pady=10,sticky=W)
 ################### END: Create Browse Button #############################
 
+################ START: Create Generate Button #############################
+generateButton = Button(root, text="Generate" , command=GenerationEngine,width = 15)
+generateButton.grid(row=2,column=4,padx=0,pady=0)
+################ END: Create Generate Button   #############################
 
-############################## START: Main ################################
+############################## START: Main #################################
 if __name__ == '__main__':
     print("**** Start Application... ***** ")
     root.mainloop(0)
