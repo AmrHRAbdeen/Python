@@ -43,7 +43,7 @@ def GenerationEngine():
 
 ####################### START: Building GUI ############################
 root = Tk()
-root.wm_iconbitmap(bitmap="MSexcel.ico")
+root.wm_iconbitmap(bitmap="MS_Excel.ico")
 root.title(" Excel Parser ")
 root.minsize(700, 100)
 root.maxsize(1000,500)
