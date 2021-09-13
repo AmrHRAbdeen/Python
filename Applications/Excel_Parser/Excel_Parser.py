@@ -11,16 +11,18 @@ from tkinter import Tk
 from tkinter import END
 from tkinter import INSERT
 from tkinter import W
+from tkinter import ttk
+from tkinter import Frame
 from tkinter import Label
 from tkinter import Button
 from tkinter import messagebox
 from tkinter import filedialog
 from tkinter import Text
 
-
 ############### START: Global Variables ###############################
-fileName=""
+fileName = ""
 ################## END: Global Variables ###############################
+
 
 ################## START: Define mFileOpen #############################
 def mFileOpen():
@@ -33,6 +35,7 @@ def mFileOpen():
     print(fileName)
 ###################### END: Define mFileOpen #############################
 
+
 ###################### START: Define GenerationEngine #####################
 def GenerationEngine():
     ### Define Generation Logic ###
@@ -42,27 +45,54 @@ def GenerationEngine():
 
 
 ####################### START: Building GUI ############################
+#import os
 root = Tk()
-root.wm_iconbitmap(bitmap="MS_Excel.ico")
+#print("CWD={}".format(os.getcwd()))
+### For windows display Only
+#root.wm_iconbitmap(bitmap='MS_Excel.ico')
 root.title(" Excel Parser ")
-root.minsize(700, 100)
-root.maxsize(1000,500)
+root.geometry("680x120")
+#Don't allow resizing in the x or y direction
+root.resizable(0, 0)
+#root.minsize(720, 100)
+#root.maxsize(1000,500)
 ####################### END: Building GUI ##############################
 
+###################### START: Create tabs ##############################
+myNoteBook = ttk.Notebook(root)
+myNoteBook.pack()
+### Each tab will be in a frame
+GeneratorFrame = Frame(myNoteBook,width=680,height=120)
+AboutFrame = Frame(myNoteBook,width=680,height=120)
 
+GeneratorFrame.pack()
+AboutFrame.pack()
 
-################ START: Create Browse Button #############################
-browseButton = Button(root, text="browse", command=mFileOpen,width = 10)
-browseButton.grid(row=0,column=0,padx=10,pady=5)
-### Display File Location ###
-browseLocation=Text(root,height=1,width=50)
-browseLocation.grid(row=0,column=1,padx=10,pady=10,sticky=W)
-################### END: Create Browse Button #############################
+myNoteBook.add(GeneratorFrame,text="Generator")
+myNoteBook.add(AboutFrame,text="About")
 
 ################ START: Create Generate Button #############################
-generateButton = Button(root, text="Generate" , command=GenerationEngine,width = 15)
-generateButton.grid(row=2,column=4,padx=0,pady=0)
+generateButton = Button(GeneratorFrame, text="Generate" , command=GenerationEngine,width=8)
+generateButton.grid(row=3,column=2,padx=20,pady=10)
 ################ END: Create Generate Button   #############################
+
+################ START: Create Browse Button #############################
+browseButton = Button(GeneratorFrame, text="browse", command=mFileOpen,width=10)
+browseButton.grid(row=0,column=0,padx=10,pady=5)
+### Display File Location ###
+browseLocation = Text(GeneratorFrame,height=1,width=50)
+browseLocation.grid(row=0 , column=1,padx=10,pady=10,sticky=W)
+################### END: Create Browse Button #############################
+
+############# START: About Info. #####################
+About_Lable = Label(AboutFrame,text="GUI Frame for Multi-purposes usage")
+About_Lable.pack(pady=5)
+About_Lable = Label(AboutFrame,text="Developed By : Amr Abdeen (amr.abdeen2050@gmail.com)")
+About_Lable.pack(pady=10)
+############# END  : About Info. #####################
+
+
+###################### END : Create tabs ##############################
 
 ############################## START: Main #################################
 if __name__ == '__main__':
@@ -70,7 +100,3 @@ if __name__ == '__main__':
     root.mainloop(0)
 
 ############################# END: Main ####################################
-
-
-
-

@@ -53,7 +53,7 @@ def IDE_Engine():
 
 ####################### START: Building GUI ############################
 root = Tk()
-root.wm_iconbitmap(bitmap="IDE_Icon.ico")
+#root.wm_iconbitmap(bitmap="IDE_Icon.ico")
 root.title(" Th3Abdeen | Embedded IDE ")
 root.minsize(700, 100)
 root.maxsize(1000,500)
