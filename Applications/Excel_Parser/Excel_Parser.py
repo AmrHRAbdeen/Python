@@ -19,6 +19,14 @@ from tkinter import messagebox
 from tkinter import filedialog
 from tkinter import Text
 
+############# START: vLookup Example #############
+'''
+for row in ws['E5:E91']:
+    for cell in row:
+       cell.value = "=VLOOKUP(D{0}, 'POD data'!C1:D87, 2, FALSE)".format(cell.row)
+'''
+############# END: vLookup Example #############
+
 ############### START: Global Variables ###############################
 fileName = ""
 ################## END: Global Variables ###############################
